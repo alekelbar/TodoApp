@@ -1,39 +1,46 @@
 import { Button, TextField, Grid, Snackbar, Alert } from "@mui/material";
 import { Box } from "@mui/system";
-import { FormikValues, useFormik } from "formik";
+import { FormikHelpers, FormikValues, useFormik } from "formik";
 import React from "react";
 import * as yup from "yup";
+import { SnackError } from "../SnackError";
+import { TaskInterface } from "../../interfaces/Task/task.interface";
+
+const initialValues: TaskInterface = {
+  title: "",
+  description: "",
+};
+
+const onSubmit = (
+  values: FormikValues,
+  { resetForm }: FormikHelpers<TaskInterface>
+) => {
+  console.log(values);
+  resetForm();
+};
+
+const validationSchema = yup.object({
+  title: yup
+    .string()
+    .min(5, "Min 5 characters for the title field")
+    .required("Title it's a required field"),
+  description: yup
+    .string()
+    .min(10, "Min 10 characters for the description field")
+    .required("Description it's a required field"),
+});
+
+const onReset = (values: any) => {
+  console.log("reset called");
+};
 
 export const TodoForm: React.FC = () => {
   const formik = useFormik({
-    initialValues: {
-      title: "",
-      description: "",
-    },
-    onSubmit: (values: FormikValues) => {
-      console.log(values);
-    },
-    validationSchema: yup.object({
-      title: yup
-        .string()
-        .required("Title it's a required field")
-        .min(5, "Min 5 characters for the title field"),
-      description: yup
-        .string()
-        .required("Description it's a required field")
-        .min(10, "Min 10 characters for the description field"),
-    }),
+    initialValues,
+    onSubmit,
+    validationSchema,
+    onReset,
   });
-
-  const handleErrors = (msg: string) => {
-    return (
-      <Snackbar open={true} autoHideDuration={3000}>
-        <Alert severity="warning" sx={{ width: "100%" }}>
-          {msg}
-        </Alert>
-      </Snackbar>
-    );
-  };
 
   return (
     <Box component={"form"} onSubmit={formik.handleSubmit}>
@@ -68,13 +75,13 @@ export const TodoForm: React.FC = () => {
           <Button type="submit" fullWidth variant="contained">
             Add Task
           </Button>
-          {formik.touched.title && formik.errors.title
-            ? handleErrors(formik.errors.title)
-            : null}
+          {formik.touched.title && formik.errors.title ? (
+            <SnackError msg={formik.errors.title} />
+          ) : null}
 
-          {formik.touched.description && formik.errors.description
-            ? handleErrors(formik.errors.description)
-            : null}
+          {formik.touched.description && formik.errors.description ? (
+            <SnackError msg={formik.errors.description} />
+          ) : null}
         </Grid>
       </Grid>
     </Box>
