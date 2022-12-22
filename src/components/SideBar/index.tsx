@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   Drawer,
   IconButton,
@@ -11,6 +12,8 @@ import React from "react";
 import { sampleTaskData } from "../../data/SampleData";
 import { Task } from "../Task";
 import { CloseOutlined } from "@mui/icons-material";
+import { RootState } from "../../redux/hooks/hooks.redux";
+import { useSelector } from "react-redux";
 
 interface Props {
   open: boolean;
@@ -18,6 +21,8 @@ interface Props {
 }
 
 export const SideBar: React.FC<Props> = ({ onOpen, open }) => {
+  const data = useSelector((state: RootState) => state.todoReducer);
+
   return (
     <Drawer
       anchor="left"
@@ -38,11 +43,19 @@ export const SideBar: React.FC<Props> = ({ onOpen, open }) => {
         <CloseOutlined />
       </Button>
       <List>
-        {sampleTaskData.map((e) => (
-          <ListItem key={e.title}>
-            <Task task={e} />
-          </ListItem>
-        ))}
+        {data
+          .filter((e) => e.done)
+          .map((e) => (
+            <ListItem key={e.title}>
+              <Task task={e} />
+            </ListItem>
+          ))}
+
+        {!data.length && (
+          <Alert variant="outlined" sx={{ width: "100%" }} severity="info">
+            No data found
+          </Alert>
+        )}
       </List>
     </Drawer>
   );

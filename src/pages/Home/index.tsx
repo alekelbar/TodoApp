@@ -1,11 +1,16 @@
 import React from "react";
 import { Layout } from "../../common/Layout";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Alert } from "@mui/material";
 import { TodoForm } from "../../components/TodoForm";
 import { sampleTaskData } from "../../data";
 import { Task } from "../../components/Task";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/hooks/hooks.redux";
+import { Box } from "@mui/system";
 
 export const Home = () => {
+  const data = useSelector((state: RootState) => state.todoReducer);
+
   return (
     <Layout>
       <Grid
@@ -27,12 +32,25 @@ export const Home = () => {
             alignItems="center"
             spacing={"1em"}
           >
-            {sampleTaskData.map((e) => (
-              <Grid xs={12} key={e.title} item>
-                <Task task={e} />
-              </Grid>
-            ))}
+            {data
+              .filter((e) => !e.done)
+              .map((e) => (
+                <Grid xs={12} key={e.title} item>
+                  <Task task={e} />
+                </Grid>
+              ))}
           </Grid>
+          <Box m={"0 auto"}>
+            {!data.length && (
+              <Alert
+                variant="outlined"
+                sx={{ width: "100%", mt: 2 }}
+                severity="info"
+              >
+                No data found
+              </Alert>
+            )}
+          </Box>
         </Grid>
       </Grid>
     </Layout>
