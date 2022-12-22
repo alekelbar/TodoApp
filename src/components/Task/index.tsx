@@ -30,9 +30,15 @@ export const Task: React.FC<Props> = ({ task }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" color="secondary">
-          Done
-        </Button>
+        {!task.done ? (
+          <Button variant="contained" color="secondary">
+            Done
+          </Button>
+        ) : (
+          <Button variant="contained" color="secondary">
+            Pending
+          </Button>
+        )}
         <Button variant="contained" color="warning">
           Remove
         </Button>
