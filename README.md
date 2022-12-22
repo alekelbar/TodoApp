@@ -52,7 +52,7 @@ React.JS, MUI, Redux Toolkit...
 
 ## Installation
 
-Install my-project with yarn
+Install TodoApp with yarn
 
 ```bash
   yarn install
