@@ -16,11 +16,11 @@ export const Home = () => {
         spacing={1}
         m={2}
       >
-        <Grid xs={12} sm={6} item>
+        <Grid xs={12} sm={5} item>
           <Typography variant="h4">To-do</Typography>
           <TodoForm />
         </Grid>
-        <Grid xs={12} sm={6} item maxHeight={"50vh"} overflow="auto">
+        <Grid xs={12} sm={7} item maxHeight={"50vh"} overflow="auto">
           <Grid
             container
             justifyContent={"center"}
