@@ -2,7 +2,6 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { ThemeConfig } from "../config";
 import { Navbar } from "./ui/Navbar";
-import { Container } from "@mui/system";
 import { SideBar } from "../components/SideBar";
 import { useState } from "react";
 

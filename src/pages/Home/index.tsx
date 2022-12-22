@@ -1,31 +1,39 @@
-import React from "react";
 import { Layout } from "../../common/Layout";
 import { Grid, Typography, Alert } from "@mui/material";
 import { TodoForm } from "../../components/TodoForm";
-import { sampleTaskData } from "../../data";
 import { Task } from "../../components/Task";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/hooks/hooks.redux";
 import { Box } from "@mui/system";
+import { setItem } from "../../helpers/SetItem";
 
 export const Home = () => {
   const data = useSelector((state: RootState) => state.todoReducer);
+  const toString = JSON.stringify(data, null, 3);
+  setItem(toString);
 
   return (
     <Layout>
       <Grid
         container
-        justifyContent={"center"}
+        justifyContent={"space-between"}
         alignItems="center"
-        maxWidth="md"
-        spacing={1}
+        maxWidth="850px"
+        height={"450px"}
+        spacing={2}
         m={2}
       >
         <Grid xs={12} sm={5} item>
           <Typography variant="h4">To-do</Typography>
           <TodoForm />
         </Grid>
-        <Grid xs={12} sm={7} item maxHeight={"50vh"} overflow="auto">
+        <Grid
+          xs={12}
+          sm={7}
+          item
+          sx={{ maxHeight: { sm: "450px", xs: "250px" } }}
+          overflow="auto"
+        >
           <Grid
             container
             justifyContent={"center"}
@@ -41,7 +49,7 @@ export const Home = () => {
               ))}
           </Grid>
           <Box m={"0 auto"}>
-            {!data.length && (
+            {!data.filter((e) => !e.done).length && (
               <Alert
                 variant="outlined"
                 sx={{ width: "100%", mt: 2 }}

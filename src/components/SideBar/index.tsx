@@ -1,15 +1,5 @@
-import {
-  Alert,
-  Button,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  Theme,
-} from "@mui/material";
+import { Alert, Button, Drawer, List, ListItem, Theme } from "@mui/material";
 import React from "react";
-import { sampleTaskData } from "../../data/SampleData";
 import { Task } from "../Task";
 import { CloseOutlined } from "@mui/icons-material";
 import { RootState } from "../../redux/hooks/hooks.redux";
@@ -51,7 +41,7 @@ export const SideBar: React.FC<Props> = ({ onOpen, open }) => {
             </ListItem>
           ))}
 
-        {!data.length && (
+        {!data.filter((e) => e.done).length && (
           <Alert variant="outlined" sx={{ width: "100%" }} severity="info">
             No data found
           </Alert>

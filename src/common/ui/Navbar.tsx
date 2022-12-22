@@ -2,7 +2,6 @@ import {
   AppBar,
   Button,
   Grid,
-  Link,
   Theme,
   Toolbar,
   Typography,
@@ -34,7 +33,7 @@ export const Navbar: React.FC<Props> = ({ onOpen }) => {
                 variant="outlined"
                 color="secondary"
               >
-                Done Task
+                Done Tasks
               </Button>
             </Typography>
           </Grid>
