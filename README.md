@@ -16,24 +16,9 @@ This is a practice to learn redux toolkit, it is a simple task app responsive on
 - Create TODOS
 
 
-## Screenshots
-
-![mobile](https://i.imgur.com/7arDYoK.png)
-![Tablet](https://i.imgur.com/C17qfgu.png)
-![Laptop](https://i.imgur.com/0EZahJi.png)
-![SideBar](https://i.imgur.com/0g8iGpC.png)
 ## Demo
 
 ![Demo](https://imgur.com/BlssUOJ.gif)
-## Installation
-
-Install my-project with yarn
-
-```bash
-  yarn install
-  cd TodoApp
-```
-    
 ## Run Locally
 
 Clone the project
@@ -64,3 +49,19 @@ Start the server
 ## 🛠 Tools
 React.JS, MUI, Redux Toolkit...
 
+
+## Installation
+
+Install my-project with yarn
+
+```bash
+  yarn install
+  cd TodoApp
+```
+    
+## Screenshots
+
+![mobile](https://i.imgur.com/7arDYoK.png)
+![Tablet](https://i.imgur.com/C17qfgu.png)
+![Laptop](https://i.imgur.com/0EZahJi.png)
+![SideBar](https://i.imgur.com/0g8iGpC.png)
