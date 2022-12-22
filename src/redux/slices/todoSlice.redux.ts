@@ -6,7 +6,14 @@ const initialState: TaskInterface[] = [];
 export const todoDoSlice = createSlice({
   name: "todoSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    addTodo: (state, { payload }) => {
+      return [...state, payload];
+    },
+    removeTodo: (state, { payload }) => {
+      return state.filter((e) => e.title == payload);
+    },
+  },
 });
 
 // Action creators are generated for each case reducer function
