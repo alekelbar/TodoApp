@@ -17,8 +17,10 @@ This is a practice to learn redux toolkit, it is a simple task app responsive on
 
 
 ## Demo
+<p align="center">
+  <img src="https://imgur.com/BlssUOJ.gif" />
+</p>
 
-![Demo](https://imgur.com/BlssUOJ.gif)
 ## Run Locally
 
 Clone the project
@@ -60,8 +62,8 @@ Install TodoApp with yarn
 ```
     
 ## Screenshots
-
-![mobile](https://i.imgur.com/7arDYoK.png)
-![Tablet](https://i.imgur.com/C17qfgu.png)
-![Laptop](https://i.imgur.com/0EZahJi.png)
-![SideBar](https://i.imgur.com/0g8iGpC.png)
+<p align="center">
+    <img src="https://i.imgur.com/7arDYoK.png" width="50%"/>
+    <img src="https://i.imgur.com/0EZahJi.png" width="50%"/>
+    <img src="https://i.imgur.com/0EZahJi.png" width="50%"/>
+</p>
